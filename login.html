@@ -6,7 +6,10 @@
 
     <title> SHG - Login </title>
     <link rel="stylesheet" href="login.css">
+    <link rel="icon" type="image/svg+xml" href="icons/hive.svg">
 
+    <!-- Nota: La fuente "Material+Symbols de google, es una fuente de solo iconos", 
+    desde ahi descargo los simbolos que uso en la pagina como el de panal, persona o clave -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
   </head>
@@ -29,7 +32,37 @@
     </div>
 
     <div id="pantalla-derecha">
+      <div id="contenedor-formulario">
+        <div id="encabezado-formulario">
+          <h2> Ingreso del personal </h2>
+          <p> Ingresa tus credenciales para acceder a la herramienta. </p>
+        </div>
 
+        <form id="formulario-login">
+          <div class="grupo-input">
+            <label for="usuario"> Usuario </label>
+            <div class="contenedor-input">
+              <span class="material-symbols-outlined icono-input">person</span>
+              <input type="text" id="usuario" placeholder="Usuario" required/>
+            </div>
+          </div>
+
+          <div class="grupo-input">
+            <label for="password"> Contraseña </label>
+            <div class="contenedor-input">
+              <span class="material-symbols-outlined icono-input">lock</span>
+              <input type="password" id="password" placeholder="••••••••" required/>
+            </div>
+          </div>
+
+          <button type="submit" id="boton-ingreso"> Iniciar Sesión </button>
+        </form>
+
+        <div id="pie-formulario">
+          <span class="material-symbols-outlined">verified_user</span>
+          <p> Solo acceso autorizado. </p>
+        </div>
+      </div>
     </div>
   </body>
 </html>
