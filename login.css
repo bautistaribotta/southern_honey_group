@@ -1,5 +1,4 @@
 :root {
-  --primario: #556b2fb;
   --brand-olive: #556b2f;
   --brand-cream: #fdfcf8;
   --stone-900: #0C0A09;
@@ -10,7 +9,6 @@
   --slate-400: #94a3b8;
   --stone-300: #d6d3d1;
   --stone-200: #e7e5e4;
-  --box-shadow-marron: #ee6c2b33;
   --font-main: 'Plus Jakarta Sans', sans-serif;
 }
 
@@ -161,7 +159,7 @@ body {
 }
 
 .contenedor-input:focus-within .icono-input {
-  color: var(--primario);
+  color: var(--brand-olive);
 }
 
 .contenedor-input input {
@@ -181,15 +179,15 @@ body {
 }
 
 .contenedor-input input:focus {
-  border-color: var(--primario);
-  box-shadow: 0 0 0 1px var(--primario);
+  border-color: var(--brand-olive);
+  box-shadow: 0 0 0 1px var(--brand-olive);
 }
 
 #boton-ingreso {
   width: 100%;
   height: 3.5rem;
   margin-top: 0.5rem;
-  background-color: var(--primario);
+  background-color: var(--brand-olive);
   color: var(--brand-cream);
   font-family: inherit;
   font-size: 1rem;
@@ -197,14 +195,14 @@ body {
   border: none;
   border-radius: 0.75rem;
   cursor: pointer;
-  box-shadow: 0 10px 15px -3px var(--box-shadow-marron);
+  box-shadow: 0 10px 15px -3px var(--brand-olive);
   transition: all 0.2s;
 }
 
 #boton-ingreso:hover {
   transform: translateY(-2px);
-  box-shadow: 0 20px 25px -5px var(--box-shadow-marron);
-  background-color: var(--primario);
+  box-shadow: 0 20px 25px -5px var(--brand-olive);
+  background-color: var(--brand-olive);
 }
 
 #pie-formulario {
