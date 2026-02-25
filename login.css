@@ -1,0 +1,67 @@
+:root {
+    --color-azul: #002C39;
+    --color-amarillo: #FDB604;
+}
+
+body {
+    background-color: var(--color-azul);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Aplicar border-radius de 8px a todos los div */
+div {
+    border-radius: 8px;
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.1); /* Estilo glass */
+    backdrop-filter: blur(10px); /* Blur */
+    padding: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 300px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    color: white;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.input-group input::placeholder {
+    color: #ccc;
+}
+
+.btn-login {
+    background-color: var(--color-amarillo); /* Uso de la variable */
+    color: var(--color-azul);
+    border: none;
+    padding: 12px;
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.btn-login:hover {
+    background-color: #e0a503;
+}
