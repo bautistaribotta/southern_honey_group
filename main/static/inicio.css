@@ -108,13 +108,94 @@ body {
   color: var(--slate-900);
 }
 
+/* --- ESTILOS DEL MENÚ DE USUARIO (DROPDOWN) --- */
+
+#perfil-usuario-container {
+  position: relative;
+  user-select: none;
+}
+
 #perfil-usuario {
+  list-style: none; /* Quitar la flecha por defecto de details */
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: var(--slate-700);
-  font-weight: 600;
+  gap: 12px;
+  background-color: white;
+  padding: 0.6rem 1.4rem;
+  border-radius: 2rem;
+  border: 1px solid var(--stone-200);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
+
+#perfil-usuario::-webkit-details-marker {
+  display: none; /* Otra forma de quitar la flecha por defecto */
+}
+
+#perfil-usuario:hover {
+  border-color: var(--brand-olive);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+#perfil-usuario span {
+  color: var(--slate-400);
+}
+
+#nombre-usuario {
+  color: var(--brand-olive);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+#flecha-perfil {
+  font-size: 20px;
+  color: var(--slate-400);
+  transition: transform 0.3s ease;
+}
+
+#perfil-usuario-container[open] #flecha-perfil {
+  transform: rotate(180deg);
+}
+
+#menu-desplegable-usuario {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  width: 180px;
+  background-color: white;
+  border-radius: 1rem;
+  border: 1px solid var(--stone-200);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+  z-index: 100;
+}
+
+#opcion-logout, #opcion-logout:link, #opcion-logout:visited {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.6rem 1rem;
+  color: var(--brand-olive);
+  text-decoration: none !important;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+  cursor: pointer !important;
+}
+
+#opcion-logout:hover {
+  background-color: #fdfcf8;
+  color: var(--brand-olive);
+  text-decoration: none !important;
+}
+
+#opcion-logout span {
+  font-size: 20px;
+}
+
+/* --- FIN DEL DROPDOWN --- */
 
 #area-trabajo {
   display: flex;

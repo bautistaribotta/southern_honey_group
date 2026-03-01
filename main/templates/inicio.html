@@ -22,31 +22,31 @@
 
       <ul id="menu-navegacion">
         <li>
-          <a href="#" class="item-menu activo">
+          <a href="{% url 'inicio' %}" class="item-menu activo">
             <span class="material-symbols-outlined">home</span>
             Inicio
           </a>
         </li>
         <li>
-          <a href="#" class="item-menu">
+          <a href="{% url 'productos' %}" class="item-menu">
             <span class="material-symbols-outlined">inventory_2</span>
             Productos
           </a>
         </li>
         <li>
-          <a href="#" class="item-menu">
+          <a href="{% url 'clientes'%}" class="item-menu">
             <span class="material-symbols-outlined">groups</span>
             Clientes
           </a>
         </li>
         <li>
-          <a href="#" class="item-menu">
+          <a href="{% url 'deudores' %}" class="item-menu">
             <span class="material-symbols-outlined">account_balance_wallet</span>
             Deudores
           </a>
         </li>
         <li>
-          <a href="#" class="item-menu">
+          <a href="{% url 'remitos' %}" class="item-menu">
             <span class="material-symbols-outlined">receipt_long</span>
             Remitos
           </a>
@@ -57,10 +57,21 @@
     <main id="contenido-principal">
       <header id="cabecera-principal">
         <h2> Inicio </h2>
-        <div id="perfil-usuario">
-          <span class="material-symbols-outlined">account_circle</span>
-          <p> {{ user.username }} </p> <!-- Colocar el tipo de usuario en la sesion -->
-        </div>
+        
+        <details id="perfil-usuario-container">
+          <summary id="perfil-usuario">
+            <span class="material-symbols-outlined">account_circle</span>
+            <p id="nombre-usuario"> {{ user.username }} </p>
+            <span class="material-symbols-outlined" id="flecha-perfil">expand_more</span>
+          </summary>
+          
+          <div id="menu-desplegable-usuario">
+            <a href="#" id="opcion-logout">
+              <span class="material-symbols-outlined">logout</span>
+              Cerrar Sesión
+            </a>
+          </div>
+        </details>
       </header>
 
       <section id="area-trabajo">
