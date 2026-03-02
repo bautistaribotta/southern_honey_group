@@ -1,11 +1,246 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
     <title> Productos </title>
-</head>
-<body>
-    
-</body>
+    <!-- Importamos el CSS base para la estructura y menú lateral -->
+    <link rel="stylesheet" href="{% static 'inicio.css' %}">
+    <!-- Importamos el CSS específico de las tablas y botones de productos -->
+    <link rel="stylesheet" href="{% static 'productos.css' %}">
+    <link rel="icon" type="image/svg+xml" href="../static/hive.svg">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  </head>
+
+  <body>
+    <!-- BARRA LATERAL -->
+    <nav id="barra-lateral">
+      <div id="encabezado-sidebar">
+        <span class="material-symbols-outlined" id="icono-panal-sidebar">hive</span>
+        <h3> Southern <br> Honey <br> Group </h3>
+      </div>
+
+      <ul id="menu-navegacion">
+        <li>
+          <a href="{% url 'inicio' %}" class="item-menu">
+            <span class="material-symbols-outlined">home</span>
+            Inicio
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'productos' %}" class="item-menu activo">
+            <span class="material-symbols-outlined">inventory_2</span>
+            Productos
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'clientes'%}" class="item-menu">
+            <span class="material-symbols-outlined">groups</span>
+            Clientes
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'deudores' %}" class="item-menu">
+            <span class="material-symbols-outlined">account_balance_wallet</span>
+            Deudores
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'remitos' %}" class="item-menu">
+            <span class="material-symbols-outlined">receipt_long</span>
+            Remitos
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main id="contenido-principal">
+      
+      <!-- CABECERA PRINCIPAL -->
+      <header id="cabecera-principal">
+        <div id="titulos-cabecera">
+          <h2> Inventario de Productos </h2>
+          <p> Gestione el stock aquí, agregue, edite o elimine productos </p>
+        </div>
+        
+        <details id="perfil-usuario-container">
+          <summary id="perfil-usuario">
+            <span class="material-symbols-outlined">account_circle</span>
+            <p id="nombre-usuario"> {{ user.username }} </p>
+            <span class="material-symbols-outlined" id="flecha-perfil">expand_more</span>
+          </summary>
+          
+          <div id="menu-desplegable-usuario">
+            <a href="#" id="opcion-logout">
+              <span class="material-symbols-outlined">logout</span>
+              Cerrar Sesión
+            </a>
+          </div>
+        </details>
+      </header>
+
+      <!-- ÁREA DE TRABAJO DE PRODUCTOS -->
+      <section id="area-trabajo">
+        
+        <!-- Controles Superiores: Buscador y Filtros -->
+        <div class="barra-herramientas">
+          <div class="grupo-busqueda">
+            <div class="contenedor-input-busqueda">
+              <span class="material-symbols-outlined icono-busqueda">search</span>
+              <input type="text" class="input-busqueda" placeholder="Buscar productos por nombre o ID">
+            </div>
+            
+            <div class="contenedor-filtro">
+              <select class="select-filtro">
+                <option value="">Todas las Categorías</option>
+                <option value="miel">Miel</option>
+                <option value="alimento">Alimento</option>
+                <option value="cera">Cera</option>
+                <option value="madera">Madera</option>
+                <option value="estampa">Estampa</option>
+                <option value="insumos">Insumos</option>
+                <option value="medicamentos">Medicamentos</option>
+                <option value="otros">Otros</option>
+              </select>
+              <span class="material-symbols-outlined icono-filtro">filter_list</span>
+            </div>
+          </div>
+          
+          <button class="boton-nuevo">
+            <span class="material-symbols-outlined">add</span>
+            Nuevo Producto
+          </button>
+        </div>
+
+        <!-- Tabla de Productos -->
+        <div class="contenedor-tabla">
+          <table class="tabla-productos">
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th>Categoría</th>
+                <th>Stock</th>
+                <th>Precio Unitario</th>
+                <th class="texto-derecha">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="producto-info">Miel de Pradera 500g</div>
+                  <div class="producto-id">ID: MP-500</div>
+                </td>
+                <td><span class="etiqueta etiqueta-miel">Miel</span></td>
+                <td class="stock-valor">150 Unidades</td>
+                <td class="precio-valor">$ 4.500</td>
+                <td>
+                  <div class="acciones-tabla">
+                    <button class="boton-icono editar" title="Editar">
+                      <span class="material-symbols-outlined">edit</span>
+                    </button>
+                    <button class="boton-icono eliminar" title="Eliminar">
+                      <span class="material-symbols-outlined">delete</span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="producto-info">Aceite Oliva 1L</div>
+                  <div class="producto-id">ID: AO-1000</div>
+                </td>
+                <td><span class="etiqueta etiqueta-alimento">Alimento</span></td>
+                <td class="stock-valor">45 Unidades</td>
+                <td class="precio-valor">$ 12.800</td>
+                <td>
+                  <div class="acciones-tabla">
+                    <button class="boton-icono editar" title="Editar">
+                      <span class="material-symbols-outlined">edit</span>
+                    </button>
+                    <button class="boton-icono eliminar" title="Eliminar">
+                      <span class="material-symbols-outlined">delete</span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="producto-info">Láminas de Cera</div>
+                  <div class="producto-id">ID: CERA-STD</div>
+                </td>
+                <td><span class="etiqueta etiqueta-cera">Cera</span></td>
+                <td class="stock-valor">500 Unidades</td>
+                <td class="precio-valor">$ 2.200</td>
+                <td>
+                  <div class="acciones-tabla">
+                    <button class="boton-icono editar" title="Editar">
+                      <span class="material-symbols-outlined">edit</span>
+                    </button>
+                    <button class="boton-icono eliminar" title="Eliminar">
+                      <span class="material-symbols-outlined">delete</span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="producto-info">Cajón de Madera</div>
+                  <div class="producto-id">ID: MAD-CJ</div>
+                </td>
+                <td><span class="etiqueta etiqueta-madera">Madera</span></td>
+                <td class="stock-valor">20 Unidades</td>
+                <td class="precio-valor">$ 25.000</td>
+                <td>
+                  <div class="acciones-tabla">
+                    <button class="boton-icono editar" title="Editar">
+                      <span class="material-symbols-outlined">edit</span>
+                    </button>
+                    <button class="boton-icono eliminar" title="Eliminar">
+                      <span class="material-symbols-outlined">delete</span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="producto-info">Miel de Eucalipto 1kg</div>
+                  <div class="producto-id">ID: ME-1000</div>
+                </td>
+                <td><span class="etiqueta etiqueta-miel">Miel</span></td>
+                <td class="stock-valor">200 Unidades</td>
+                <td class="precio-valor">$ 8.200</td>
+                <td>
+                  <div class="acciones-tabla">
+                    <button class="boton-icono editar" title="Editar">
+                      <span class="material-symbols-outlined">edit</span>
+                    </button>
+                    <button class="boton-icono eliminar" title="Eliminar">
+                      <span class="material-symbols-outlined">delete</span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <!-- Paginación -->
+          <div class="paginacion">
+            <div class="paginacion-info">
+              Mostrando <span>1-5</span> de <span>24</span> productos
+            </div>
+            <div class="paginacion-botones">
+              <button class="boton-paginacion" disabled>Anterior</button>
+              <button class="boton-paginacion">Siguiente</button>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </main>
+  </body>
 </html>
