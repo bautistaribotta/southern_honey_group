@@ -37,14 +37,23 @@
         <div id="encabezado-formulario">
           <h2> Ingreso del personal </h2>
           <p> Ingresa tus credenciales para acceder a la herramienta. </p>
+
+          <!-- Mensaje por si el usuario no coloca bien sus credenciales, uso un IF en HTML -->
+          {% if error %}
+          <div style="color: #ef4444; background-color: #fef2f2; padding: 10px; 
+          border-radius: 8px; margin-bottom: 15px; text-align: center; font-weight: 600;">
+            {{ error }}
+          </div>
+          {% endif %}
         </div>
 
-        <form id="formulario-login">
+        <form id="formulario-login" action="{% url 'login' %}" method="POST">
+          {% csrf_token %} <!-- Token de seguridad para Django -->
           <div class="grupo-input">
             <label for="usuario"> Usuario </label>
             <div class="contenedor-input">
               <span class="material-symbols-outlined icono-input">person</span>
-              <input type="text" id="usuario" placeholder="Usuario" required/>
+              <input type="text" id="usuario" name="user" placeholder="Usuario" required/>
             </div>
           </div>
 
@@ -52,7 +61,7 @@
             <label for="password"> Contraseña </label>
             <div class="contenedor-input">
               <span class="material-symbols-outlined icono-input">lock</span>
-              <input type="password" id="password" placeholder="••••••••" required/>
+              <input type="password" id="password" name="password" placeholder="••••••••" required/>
             </div>
           </div>
 
@@ -61,7 +70,7 @@
 
         <div id="pie-formulario">
           <span class="material-symbols-outlined">verified_user</span>
-          <p> Solo acceso autorizado. </p>
+          <p> Solo acceso a personal autorizado. </p>
         </div>
       </div>
     </div>

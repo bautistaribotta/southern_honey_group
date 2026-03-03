@@ -1,8 +1,21 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth.decorators import login_required
 
 
 def login(request):
+    if request.method == "POST":
+        usuario_ingresado = request.POST.get("user")
+        password_ingresada = request.POST.get("password")
+
+        usuario_valido = authenticate(request, username=usuario_ingresado, password=password_ingresada)
+
+        if usuario_valido is not None:
+            auth_login(request, usuario_valido)
+            return redirect("inicio")
+        else:
+            return render(request, "login.html", {"error": "Usuario o contraseña incorrectos"})
+
     return render(request, "login.html")
 
 
