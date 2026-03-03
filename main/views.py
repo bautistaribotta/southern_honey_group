@@ -8,14 +8,17 @@ def login(request):
         usuario_ingresado = request.POST.get("user")
         password_ingresada = request.POST.get("password")
 
+        # Autenticacion
         usuario_valido = authenticate(request, username=usuario_ingresado, password=password_ingresada)
 
+        # Si es válido los redirijo, si no, envío el error al HTML
         if usuario_valido is not None:
             auth_login(request, usuario_valido)
             return redirect("inicio")
         else:
             return render(request, "login.html", {"error": "Usuario o contraseña incorrectos"})
 
+    # Si no se realizo un POST, simplemente cargo la pagina
     return render(request, "login.html")
 
 
