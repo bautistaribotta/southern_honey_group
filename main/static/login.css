@@ -210,6 +210,7 @@ body {
   padding-top: 2rem;
   border-top: 1px solid var(--stone-200);
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 0.5rem;
   color: var(--slate-400);
