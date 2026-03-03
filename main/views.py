@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth.decorators import login_required
-
+from django.contrib import messages
 
 def login(request):
     if request.method == "POST":
@@ -11,12 +11,13 @@ def login(request):
         # Autenticacion
         usuario_valido = authenticate(request, username=usuario_ingresado, password=password_ingresada)
 
-        # Si es válido los redirijo, si no, envío el error al HTML
+        # Si es válido los redirijo, si no, envío el error por mensaje
         if usuario_valido is not None:
             auth_login(request, usuario_valido)
             return redirect("inicio")
         else:
-            return render(request, "login.html", {"error": "Usuario o contraseña incorrectos"})
+            messages.error(request, "Usuario o contraseña incorrectos")
+            return redirect("login")
 
     # Si no se realizo un POST, simplemente cargo la pagina
     return render(request, "login.html")

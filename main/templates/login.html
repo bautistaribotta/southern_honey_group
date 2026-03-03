@@ -38,11 +38,13 @@
           <h2> Ingreso del personal </h2>
           <p> Ingresa tus credenciales para acceder a la herramienta. </p>
 
-          <!-- Mensaje por si el usuario no coloca bien sus credenciales, uso un IF en HTML -->
-          {% if error %}
-            <div style="color: #ef4444; background-color: #fef2f2; padding: 10px; 
-              border-radius: 8px; margin-bottom: 15px; text-align: center; font-weight: 600;"> {{ error }}
-            </div>
+          <!-- Mensaje por si el usuario no coloca bien sus credenciales, uso el framework de mensajes de Django -->
+          {% if messages %}
+            {% for message in messages %}
+              <div id="mensaje-error-login"> 
+                {{ message }}
+              </div>
+            {% endfor %}
           {% endif %}
 
         </div>
