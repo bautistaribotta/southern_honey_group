@@ -21,8 +21,8 @@
 body {
   font-family: var(--font-main);
   background-color: var(--brand-cream);
-  min-height: 100vh;
-  overflow-x: hidden; /* Para que no aparezca la scroll-bar */
+  height: 100vh;
+  overflow: hidden; /* Para que no aparezca ninguna scroll-bar */
   display: flex;
 }
 
@@ -124,18 +124,46 @@ body {
 }
 
 #mensaje-error-login {
-  color: #ef4444; 
-  padding: 10px; 
-  border-radius: 8px;
-  margin-bottom: 15px; 
-  text-align: center; 
-  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  padding: 0.6rem 1rem; 
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0; 
+  text-align: left; 
+}
+
+.icono-error {
+  font-size: 24px;
+  color: #dc2626;
+}
+
+.texto-error {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.error-titulo {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #b91c1c;
+}
+
+.error-subtitulo {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #dc2626;
 }
 
 #formulario-login {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
+  margin-top: 1rem;
 }
 
 .grupo-input {

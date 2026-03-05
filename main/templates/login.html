@@ -42,7 +42,11 @@
           {% if messages %}
             {% for message in messages %}
               <div id="mensaje-error-login"> 
-                {{ message }}
+                <span class="material-symbols-outlined icono-error">error</span>
+                <div class="texto-error">
+                  <p class="error-titulo">{{ message }}.</p>
+                  <p class="error-subtitulo">Por favor, inténtalo de nuevo.</p>
+                </div>
               </div>
             {% endfor %}
           {% endif %}
