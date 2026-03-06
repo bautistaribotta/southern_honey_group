@@ -1,11 +1,127 @@
-/* --- ESTILOS ESPECÍFICOS PARA LA PÁGINA DE DEUDORES --- */
-/* La barra lateral, header y layout base se heredan de inicio.css */
-
-#titulos-cabecera h2 {
-  margin-bottom: 0.25rem;
+/* --- CONTENEDOR PRINCIPAL TABLA --- */
+.contenedor-tabla {
+  background-color: white;
+  border: 1px solid var(--stone-200);
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
-#titulos-cabecera p {
+/* --- TABLA DE DEUDORES --- */
+.tabla-deudores {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.tabla-deudores th {
+  padding: 1rem 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
   color: var(--slate-500);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background-color: #f8fafc;
+  border-bottom: 1px solid var(--stone-200);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.tabla-deudores th.texto-derecha {
+  text-align: right;
+}
+
+/* Anchos de columnas para Deudores (8 columnas) */
+.tabla-deudores th:nth-child(1) { width: 5%; }  /* ID */
+.tabla-deudores th:nth-child(2) { width: 18%; } /* Nombre */
+.tabla-deudores th:nth-child(3) { width: 12%; } /* Fecha */
+.tabla-deudores th:nth-child(4) { width: 15%; } /* Pesos */
+.tabla-deudores th:nth-child(5) { width: 10%; } /* USD/Hist */
+.tabla-deudores th:nth-child(6) { width: 10%; } /* USD/Hoy */
+.tabla-deudores th:nth-child(7) { width: 15%; } /* Kg Miel/Hist */
+.tabla-deudores th:nth-child(8) { width: 15%; } /* Kg Miel/Hoy */
+
+.tabla-deudores td {
+  padding: 1rem 1.5rem;
   font-size: 0.875rem;
+  border-bottom: 1px solid var(--stone-200);
+  color: var(--slate-700);
+}
+
+/* Estilos de tipografía en celdas */
+.deudor-id {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--slate-400);
+}
+
+.deudor-nombre {
+  font-weight: 600;
+  color: var(--slate-900);
+}
+
+.valor-pesos, .valor-usd, .valor-miel {
+  font-weight: 500;
+}
+
+.tabla-deudores tbody tr {
+  transition: background-color 0.2s;
+}
+
+.tabla-deudores tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.tabla-deudores tbody tr:hover {
+  background-color: var(--brand-cream);
+}
+
+/* --- PAGINACIÓN --- */
+.paginacion {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--stone-200);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+}
+
+.paginacion-info {
+  font-size: 0.75rem;
+  color: var(--slate-500);
+}
+
+.paginacion-info span {
+  font-weight: 600;
+  color: var(--slate-700);
+}
+
+.paginacion-botones {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.boton-paginacion {
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--stone-200);
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--slate-600);
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.boton-paginacion:hover:not(:disabled) {
+  background-color: var(--stone-200);
+}
+
+.boton-paginacion:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

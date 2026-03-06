@@ -84,6 +84,21 @@
 
       <!-- ÁREA DE TRABAJO -->
       <section id="area-trabajo">
+        
+        <!-- Controles Superiores: Buscador -->
+        <div class="barra-herramientas">
+          <div class="grupo-busqueda">
+            <div class="contenedor-input-busqueda">
+              <span class="material-symbols-outlined icono-busqueda">search</span>
+              <input type="text" class="input-busqueda" placeholder="Buscar clientes por nombre o ID">
+            </div>
+          </div>
+          
+          <button class="boton-nuevo">
+            <span class="material-symbols-outlined">add</span>
+            Nuevo Cliente
+          </button>
+        </div>
 
         <div class="contenedor-tabla"> 
           <table class="tabla-clientes">
@@ -97,9 +112,35 @@
               </tr>
             </thead>
             <tbody>
-
+              <tr>
+                <td><div class="cliente-id"></div></td>
+                <td><div class="cliente-nombre"></div></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="acciones-tabla">
+                    <button class="boton-icono editar" title="Editar">
+                      <span class="material-symbols-outlined">edit</span>
+                    </button>
+                    <button class="boton-icono eliminar" title="Eliminar">
+                      <span class="material-symbols-outlined">delete</span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
             </tbody>
           </table>
+          
+          <!-- Paginación -->
+          <div class="paginacion">
+            <div class="paginacion-info">
+              Mostrando <span>0</span> de <span>0</span> clientes
+            </div>
+            <div class="paginacion-botones">
+              <button class="boton-paginacion" disabled>Anterior</button>
+              <button class="boton-paginacion" disabled>Siguiente</button>
+            </div>
+          </div>
         </div>
 
       </section>
