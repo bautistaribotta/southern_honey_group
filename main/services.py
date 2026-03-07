@@ -10,7 +10,7 @@ def get_cotizacion_oficial_venta():
         valor_dolar_oficial_venta = resp_json["venta"]
         return valor_dolar_oficial_venta
     except Exception as e:
-        print(f"Error al obtener cotización oficial: {e}")
+        print(f"Error al obtener cotización oficial: {e}") # Quitar a futuro
         return None
 
 
@@ -22,7 +22,7 @@ def get_cotizacion_blue_venta():
         valor_dolar_blue_venta = resp_json["venta"]
         return valor_dolar_blue_venta
     except Exception as e:
-        print(f"Error al obtener cotización blue: {e}")
+        print(f"Error al obtener cotización blue: {e}") # Quitar a futuro
         return None
 
 
@@ -38,7 +38,7 @@ def get_cotizacion_miel_clara():
         miel_clara_limpia = "".join(filter(str.isdigit, precio_miel_clara))
         return miel_clara_limpia
     except Exception as e:
-        print(f"Error al obtener cotización miel clara: {e}")
+        print(f"Error al obtener cotización miel clara: {e}") # Quitar a futuro
         return None
 
 
@@ -54,5 +54,5 @@ def get_cotizacion_miel_oscura():
         miel_oscura_limpia = "".join(filter(str.isdigit, precio_miel_oscura))
         return miel_oscura_limpia
     except Exception as e:
-        print(f"Error al obtener cotización miel oscura: {e}")
+        print(f"Error al obtener cotización miel oscura: {e}") # Quitar a futuro
         return None
