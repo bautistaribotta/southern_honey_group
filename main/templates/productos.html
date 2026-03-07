@@ -119,25 +119,27 @@
 
         <!-- Tabla de Productos -->
         <div class="contenedor-tabla">
+
           <table class="tabla-productos">
             <thead>
               <tr id="encabezado-tabla-productos">
                 <th>Producto</th>
-                <th>Categoría</th>
-                <th>Stock</th>
-                <th>Precio Unitario</th>
+                <th class="texto-centrado">Categoría</th>
+                <th class="texto-centrado">Stock</th>
+                <th class="texto-centrado">Precio Unitario</th>
                 <th class="texto-derecha">Acciones</th> <!-- Editar/Eliminar -->
               </tr>
             </thead>
             <tbody>
+              {% for producto in productos %}
               <tr>
                 <td>
-                  <div class="producto-info"></div>
-                  <div class="producto-id"></div>
+                  <div class="producto-info"> {{ producto.nombre }} </div>
+                  <div class="producto-id"> ID: {{ producto.id }} </div>
                 </td>
-                <td></td>
-                <td class="stock-valor"></td>
-                <td class="precio-valor"></td>
+                <td class="texto-centrado"> {{ producto.categoria }} </td>
+                <td class="stock-valor"> {{ producto.cantidad|floatformat:0 }} </td>
+                <td class="precio-valor"> $ {{ producto.precio }} </td>
                 <td>
                   <div class="acciones-tabla">
                     <button class="boton-icono editar" title="Editar">
@@ -149,6 +151,11 @@
                   </div>
                 </td>
               </tr>
+              {% empty %}
+              <tr>
+                <td colspan="5" style="text-align: center;"> No hay productos registrados. </td>
+              </tr>
+              {% endfor %}
             </tbody>
           </table>
           

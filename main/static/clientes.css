@@ -116,11 +116,11 @@
 }
 
 /* Anchos de columnas para Clientes */
-.tabla-clientes th:nth-child(1) { width: 10%; } /* ID */
-.tabla-clientes th:nth-child(2) { width: 35%; } /* Nombre */
-.tabla-clientes th:nth-child(3) { width: 25%; } /* Localidad */
+.tabla-clientes th:nth-child(1) { width: 25%; } /* Cliente (ID + Nombre + Apellido) */
+.tabla-clientes th:nth-child(2) { width: 25%; } /* Localidad */
+.tabla-clientes th:nth-child(3) { width: 25%; } /* Dirección */
 .tabla-clientes th:nth-child(4) { width: 15%; } /* Telefono */
-.tabla-clientes th:nth-child(5) { width: 15%; } /* Acciones */
+.tabla-clientes th:nth-child(5) { width: 10%; } /* Acciones */
 
 .tabla-clientes td {
   padding: 1rem 1.5rem;
@@ -132,8 +132,9 @@
 /* Estilos de tipografía en celdas */
 .cliente-id {
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--slate-400);
+  margin-top: 0.125rem;
 }
 
 .cliente-nombre {

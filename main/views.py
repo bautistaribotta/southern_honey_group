@@ -1,7 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from django.contrib import messages
+
+from .models import Producto, Cliente
+
 
 def login(request):
     if request.method == "POST":
@@ -37,12 +41,33 @@ def inicio(request):
 
 @login_required(login_url='/')
 def productos(request):
-    return render(request, "productos.html")
+    # Trae todos los productos de la base de datos ordenados por nombre.
+    productos = Producto.objects.all().order_by("nombre")
+
+    # Divide esa lista total en bloques de 5 productos
+    paginator_productos = Paginator(productos, 5)
+
+    # Se fija en la URL en qué página está el usuario
+    pagina_numero = request.GET.get("page")
+
+    # Extraigo únicamente los 5 productos que corresponden a esa página específica
+    pagina_obj = paginator_productos.get_page(pagina_numero)
+
+    return render(request, "productos.html", {"productos":pagina_obj})
 
 
 @login_required(login_url='/')
 def clientes(request):
-    return render(request, "clientes.html")
+    """
+    Repito el proceso aplicado en productos
+    Query + Cant. pag. a mostrar + URL + Los 5 que corresponden + Enviar el listado al HTML
+    """
+    clientes = Cliente.objects.all().order_by("nombre")
+    paginator_clientes = Paginator(clientes, 5)
+    pagina_numero = request.GET.get("page")
+    pagina_obj = paginator_clientes.get_page(pagina_numero)
+
+    return render(request, "clientes.html", {"clientes": pagina_obj})
 
 
 @login_required(login_url='/')

@@ -100,23 +100,29 @@
           </button>
         </div>
 
+        <!-- Tabla de Clientes -->
         <div class="contenedor-tabla"> 
+
           <table class="tabla-clientes">
             <thead>
               <tr id="encabezado-tabla-clientes">
-                <th> ID </th>
-                <th> Nombre </th>
+                <th> Cliente </th>
                 <th> Localidad </th>
+                <th> Dirección </th>
                 <th> Telefono </th>
                 <th class="texto-derecha"> Acciones </th> <!-- Editar/Eliminar -->
               </tr>
             </thead>
             <tbody>
+              {% for cliente in clientes %}
               <tr>
-                <td><div class="cliente-id"></div></td>
-                <td><div class="cliente-nombre"></div></td>
-                <td></td>
-                <td></td>
+                <td>
+                  <div class="cliente-nombre"> {{ cliente.nombre }} {{ cliente.apellido|default:"" }} </div>
+                  <div class="cliente-id"> ID: {{ cliente.id }} </div>
+                </td>
+                <td> {{ cliente.localidad }} </td>
+                <td> {{ cliente.direccion|default:"-" }} </td>
+                <td> {{ cliente.telefono }} </td>
                 <td>
                   <div class="acciones-tabla">
                     <button class="boton-icono editar" title="Editar">
@@ -128,6 +134,11 @@
                   </div>
                 </td>
               </tr>
+              {% empty %}
+              <tr>
+                <td colspan="5" style="text-align: center;"> No hay clientes registrados. </td>
+              </tr>
+              {% endfor %}
             </tbody>
           </table>
           

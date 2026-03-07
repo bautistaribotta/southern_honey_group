@@ -9,9 +9,9 @@ class Producto(models.Model):
     activo = models.BooleanField(default=True)
     """
         En sistemas comerciales, es mejor usar un campo 'activo' en lugar de borrar 
-        productos físicamente. Si borras un producto (DELETE), podrías perder el historial de ventas.
-        Al usar 'activo=False', el producto deja de mostrarse en la interfaz pero tus registros históricos
-        en 'detalle_operaciones' permanecen intactos.
+        productos físicamente. Si borro un producto, podría perder el historial de ventas.
+        Al usar 'activo=False', el producto deja de mostrarse en la interfaz pero los registros históricos
+        en 'detalle_operaciones' permanecen intactos
     """
 
     # Obligo a Django a nombre la tabla como "productos"
