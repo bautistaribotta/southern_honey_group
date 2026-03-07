@@ -1,5 +1,5 @@
 from django.urls import path
-from main.views import login, inicio, productos, clientes, deudores, remitos
+from main.views import login, inicio, productos, clientes, deudores, remitos, cerrar_sesion
 
 """
 La sentencia name="nombre_del_archivo" se usa 
@@ -11,5 +11,6 @@ urlpatterns = [
     path('productos/', productos, name="productos"),
     path('clientes/', clientes, name="clientes"),
     path('deudores/', deudores, name="deudores"),
-    path('remitos/', remitos, name="remitos")
+    path('remitos/', remitos, name="remitos"),
+    path('cerrar_sesion', cerrar_sesion, name="cerrar_sesion")
 ]

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.contrib import messages
@@ -77,3 +77,8 @@ def deudores(request):
 @login_required(login_url='/')
 def remitos(request):
     return render(request, "remitos.html")
+
+
+def cerrar_sesion(request):
+    auth_logout(request)
+    return redirect("login")
