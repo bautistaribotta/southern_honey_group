@@ -161,8 +161,10 @@
           
           <!-- Paginación -->
           <div class="paginacion">
+            <!-- Uso 3 variables nativas de Python para el index de la tabla -->
             <div class="paginacion-info">
-              Mostrando <span>1-5</span> de <span>0</span> productos
+              Mostrando <span>{{ productos.start_index }}-{{ productos.end_index }}</span>
+              de <span>{{ productos.paginator.count }}</span> productos
             </div>
             <div class="paginacion-botones">
               <button class="boton-paginacion" disabled>Anterior</button>

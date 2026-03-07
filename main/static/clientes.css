@@ -115,6 +115,10 @@
   text-align: right;
 }
 
+.texto-centrado {
+  text-align: center;
+}
+
 /* Anchos de columnas para Clientes */
 .tabla-clientes th:nth-child(1) { width: 25%; } /* Cliente (ID + Nombre + Apellido) */
 .tabla-clientes th:nth-child(2) { width: 25%; } /* Localidad */
