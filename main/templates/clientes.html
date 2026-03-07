@@ -150,8 +150,21 @@
               de <span>{{ clientes.paginator.count }}</span> clientes
             </div>
             <div class="paginacion-botones">
-              <button class="boton-paginacion" disabled>Anterior</button>
-              <button class="boton-paginacion" disabled>Siguiente</button>
+              {% if clientes.has_previous %}
+                <a href="?page={{ clientes.previous_page_number }}">
+                  <button class="boton-paginacion">Anterior</button>
+                </a>
+              {% else %}
+                <button class="boton-paginacion" disabled>Anterior</button>
+              {% endif %}
+
+              {% if clientes.has_next %}
+                <a href="?page={{ clientes.next_page_number }}">
+                  <button class="boton-paginacion">Siguiente</button>
+                </a>
+              {% else %}
+                <button class="boton-paginacion" disabled>Siguiente</button>
+              {% endif %}
             </div>
           </div>
         </div>
