@@ -14,7 +14,7 @@ class Producto(models.Model):
         en 'detalle_operaciones' permanecen intactos
     """
 
-    # Obligo a Django a nombre la tabla como "productos"
+    # Obligo a Django a nombrar la tabla como "productos"
     class Meta:
         db_table = 'productos'
 
@@ -31,7 +31,7 @@ class Cliente(models.Model):
     factura_produccion = models.BooleanField(default=False)
     cuit = models.CharField(max_length=15, null=True, blank=True)
 
-    # Obligo a Django a nombre la tabla como "clientes"
+    # Obligo a Django a nombrar la tabla como "clientes"
     class Meta:
         db_table = 'clientes'
 
@@ -48,7 +48,7 @@ class Operacion(models.Model):
     valor_dolar = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     valor_kilo_miel = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
 
-    # Obligo a Django a nombre la tabla como "operaciones"
+    # Obligo a Django a nombrar la tabla como "operaciones"
     class Meta:
         db_table = 'operaciones'
 
@@ -62,7 +62,7 @@ class DetalleOperacion(models.Model):
     producto = models.ForeignKey(Producto, on_delete=models.PROTECT, db_column='id_producto')
     cantidad = models.DecimalField(max_digits=10, decimal_places=2)
 
-    # Obligo a Django a nombre la tabla como "detalle_operaciones"
+    # Obligo a Django a nombrar la tabla como "detalle_operaciones"
     class Meta:
         db_table = 'detalle_operaciones'
         # Sintaxis moderna para asegurar que un producto no se repita en la misma operación
