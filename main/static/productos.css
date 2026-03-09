@@ -304,10 +304,13 @@
   overflow: hidden;
   display: flex;
   justify-content: flex-end;
+  /* Transición de visibilidad con delay para que el panel alcance a salir */
+  transition: visibility 0.3s;
 }
 
 #slide-over-contenedor.abierto {
   visibility: visible;
+  transition: none; /* Al abrir no necesitamos delay */
 }
 
 #slide-over-fondo {
@@ -332,7 +335,12 @@
   display: flex;
   flex-direction: column;
   transform: translateX(100%);
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* MEJORAS DE ANIMACION */
+  will-change: transform; /* Prepara al navegador para la animación */
+  backface-visibility: hidden; /* Evita parpadeos en elementos internos */
+  -webkit-font-smoothing: antialiased;
 }
 
 #slide-over-contenedor.abierto #slide-over-panel {
