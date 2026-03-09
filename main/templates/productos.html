@@ -111,7 +111,7 @@
             </div>
           </div>
           
-          <button class="boton-nuevo">
+          <button class="boton-nuevo" onclick="abrirPanel()">
             <span class="material-symbols-outlined">add</span>
             Nuevo Producto
           </button>
@@ -188,5 +188,80 @@
 
       </section>
     </main>
+
+    <!-- PANEL LATERAL (SLIDE-OVER) PARA NUEVO PRODUCTO -->
+    <div id="slide-over-contenedor">
+      <div id="slide-over-fondo" onclick="cerrarPanel()"></div>
+      
+      <div id="slide-over-panel">
+        <!-- Cabecera del Panel -->
+        <div class="panel-cabecera">
+          <div class="panel-titulo-fila">
+            <h2>Añadir Producto</h2>
+            <button class="boton-cerrar-panel" onclick="cerrarPanel()">
+              <span class="material-symbols-outlined">close</span>
+            </button>
+          </div>
+          <p class="panel-subtitulo">Complete los detalles a continuación para agregar un nuevo producto al inventario.</p>
+        </div>
+
+        <!-- Cuerpo del Panel (Formulario) -->
+        <div class="panel-cuerpo">
+          <form class="formulario-producto" id="form-nuevo-producto" method="POST">
+            {% csrf_token %}
+            <div class="campo-formulario">
+              <label for="nombre">Nombre del Producto</label>
+              <input type="text" id="nombre" name="nombre" class="input-estandar" placeholder="Ej: Miel Orgánica 500g" required>
+            </div>
+
+            <div class="campo-formulario">
+              <label for="categoria">Categoría</label>
+              <select id="categoria" name="categoria" class="select-estandar" required>
+                <option value="" disabled selected>Seleccione una categoría</option>
+                <option value="miel">Miel</option>
+                <option value="alimento">Alimento</option>
+                <option value="cera">Cera</option>
+                <option value="madera">Madera</option>
+                <option value="estampa">Estampa</option>
+                <option value="insumos">Insumos</option>
+                <option value="medicamentos">Medicamentos</option>
+                <option value="otros">Otros</option>
+              </select>
+            </div>
+
+            <div class="campo-formulario">
+              <label for="precio">Precio Unitario</label>
+              <div class="contenedor-input-prefijo">
+                <span class="prefijo-input">$</span>
+                <input type="number" step="0.01" id="precio" name="precio" class="input-estandar input-con-prefijo" placeholder="0.00" required>
+              </div>
+            </div>
+
+            <div class="campo-formulario">
+              <label for="stock">Stock Inicial (Opcional)</label>
+              <input type="number" step="0.01" id="stock" name="stock" class="input-estandar" placeholder="0">
+            </div>
+          </form>
+        </div>
+
+        <!-- Pie del Panel -->
+        <div class="panel-pie">
+          <button type="button" class="boton-cancelar" onclick="cerrarPanel()">Cancelar</button>
+          <button type="submit" form="form-nuevo-producto" class="boton-guardar">Guardar Producto</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function abrirPanel() {
+        document.getElementById('slide-over-contenedor').classList.add('abierto');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function cerrarPanel() {
+        document.getElementById('slide-over-contenedor').classList.remove('abierto');
+        document.body.style.overflow = 'auto';
+      }
+    </script>
   </body>
 </html>

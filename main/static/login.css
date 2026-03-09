@@ -257,3 +257,11 @@ body {
 #pie-formulario span {
   font-size: 18px;
 }
+
+/* --- Modificacion del auto-completado del navegador --- */
+.contenedor-input input:-webkit-autofill,
+.contenedor-input input:-webkit-autofill:hover, 
+.contenedor-input input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 30px var(--slate-300) inset !important;
+  -webkit-text-fill-color: var(--slate-900) !important;
+}
