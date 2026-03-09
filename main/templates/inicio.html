@@ -18,7 +18,7 @@
   </head>
 
   <body>
-    <!-- 1. Barra Lateral -->
+    <!-- 1. Barra Lateral izq. -->
     <nav id="barra-lateral">
       <div id="encabezado-sidebar">
         <span class="material-symbols-outlined" id="icono-panal-sidebar">hive</span>
@@ -33,7 +33,11 @@
           </a>
         </li>
         <li>
-          <a href="{% url 'productos' %}" class="item-menu">
+          <a hx-get="{% url 'productos' %}" 
+            hx-target="#area-trabajo"
+            hx-trigger="click"
+            hx-push-url="true"
+            class="item-menu">
             <span class="material-symbols-outlined">inventory_2</span>
             Productos
           </a>
