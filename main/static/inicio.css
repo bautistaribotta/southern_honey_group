@@ -215,7 +215,7 @@ body {
   padding: 2rem;
   border-radius: 1rem;
   border: 1px solid var(--stone-200);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 10px 15px -3px #00000005;
 }
 
 .tarjeta-info h3 {
@@ -227,4 +227,19 @@ body {
 .tarjeta-info p {
   color: var(--slate-500);
   font-size: 1rem;
+}
+
+#contenedor-cotizaciones {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+#contenedor-cotizaciones .tarjeta-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
 }

@@ -2,28 +2,38 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def get_cotizacion_oficial_venta():
+def get_cotizacion_oficial():
     url_dolar_oficial = "https://dolarapi.com/v1/dolares/oficial"
     try:
         respuesta = requests.get(url_dolar_oficial, verify=True)
-        resp_json = respuesta.json()
-        valor_dolar_oficial_venta = resp_json["venta"]
-        return valor_dolar_oficial_venta
+        datos = respuesta.json()
+        return {
+            "compra": datos.get("compra"),
+            "venta": datos.get("venta")
+        }
     except Exception as e:
         print(f"Error al obtener cotización oficial: {e}") # Quitar a futuro
-        return None
+        return {
+            "compra": None,
+            "venta": None
+        }
 
 
-def get_cotizacion_blue_venta():
+def get_cotizacion_blue():
     url_dolar_blue = "https://dolarapi.com/v1/dolares/blue"
     try:
         respuesta = requests.get(url_dolar_blue, verify=True)
-        resp_json = respuesta.json()
-        valor_dolar_blue_venta = resp_json["venta"]
-        return valor_dolar_blue_venta
+        datos = respuesta.json()
+        return {
+            "compra": datos.get("compra"),
+            "venta": datos.get("venta")
+        }
     except Exception as e:
-        print(f"Error al obtener cotización blue: {e}") # Quitar a futuro
-        return None
+        print(f"Error al obtener cotización oficial: {e}")  # Quitar a futuro
+        return {
+            "compra": None,
+            "venta": None
+        }
 
 
 def get_cotizacion_miel_clara():

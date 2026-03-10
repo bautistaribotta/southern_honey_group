@@ -1,9 +1,9 @@
+from .services import get_cotizacion_oficial, get_cotizacion_blue, get_cotizacion_miel_clara, get_cotizacion_miel_oscura
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.contrib import messages
-
 from .models import Producto, Cliente
 
 
@@ -36,7 +36,17 @@ para que se loguee. Todo esto implementado usando el wrapped @login_required
 
 @login_required(login_url='/')
 def inicio(request):
-    return render(request, "inicio.html")
+    dolar_oficial = get_cotizacion_oficial()
+    dolar_blue = get_cotizacion_blue()
+    miel_clara = get_cotizacion_miel_clara()
+    miel_oscura = get_cotizacion_miel_oscura()
+    contexto = {
+        "oficial": dolar_oficial,
+        "blue": dolar_blue,
+        "miel_clara": miel_clara,
+        "miel_oscura": miel_oscura
+    }
+    return render(request, "inicio.html", contexto)
 
 
 @login_required(login_url='/')
@@ -73,6 +83,7 @@ def clientes(request):
 @login_required(login_url='/')
 def deudores(request):
     return render(request, "deudores.html")
+
 
 @login_required(login_url='/')
 def remitos(request):
