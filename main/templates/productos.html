@@ -6,8 +6,9 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
     <title> Productos </title>
-    <!-- Importamos el CSS base para la estructura y menú lateral -->
+    <!-- Importo el CSS base para la estructura y menú lateral -->
     <link rel="stylesheet" href="{% static 'inicio.css' %}">
+    
     <!-- Importamos el CSS específico de las tablas y botones de productos -->
     <link rel="stylesheet" href="{% static 'productos.css' %}">
     <link rel="icon" type="image/svg+xml" href="../static/hive.svg">
@@ -185,13 +186,12 @@
             </div>
           </div>
         </div>
-
       </section>
     </main>
 
-    <!-- PANEL LATERAL (SLIDE-OVER) PARA NUEVO PRODUCTO -->
+    <!-- PANEL LATERAL NUEVO PRODUCTO (SLIDE-OVER) -->
     <div id="slide-over-contenedor">
-      <div id="slide-over-fondo" onclick="cerrarPanel()"></div>
+      <div id="slide-over-fondo" onclick="cerrarPanel()"> </div>
       
       <div id="slide-over-panel">
         <!-- Cabecera del Panel -->
@@ -252,6 +252,7 @@
       </div>
     </div>
 
+    <!-- JS para realizar la accion -->
     <script>
       function abrirPanel() {
         document.getElementById('slide-over-contenedor').classList.add('abierto');

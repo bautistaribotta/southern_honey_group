@@ -20,7 +20,7 @@ def login(request):
             auth_login(request, usuario_valido)
             return redirect("inicio")
         else:
-            messages.error(request, "Usuario o contraseña incorrectos")
+            messages.error(request, "Usuario y/o contraseña incorrectos")
             return redirect("login")
 
     # Si no se realizo un POST, simplemente cargo la pagina
@@ -38,13 +38,9 @@ para que se loguee. Todo esto implementado usando el wrapped @login_required
 def inicio(request):
     dolar_oficial = get_cotizacion_oficial()
     dolar_blue = get_cotizacion_blue()
-    miel_clara = get_cotizacion_miel_clara()
-    miel_oscura = get_cotizacion_miel_oscura()
     contexto = {
         "oficial": dolar_oficial,
-        "blue": dolar_blue,
-        "miel_clara": miel_clara,
-        "miel_oscura": miel_oscura
+        "blue": dolar_blue
     }
     return render(request, "inicio.html", contexto)
 
