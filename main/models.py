@@ -6,6 +6,7 @@ class Producto(models.Model):
     categoria = models.CharField(max_length=50, null=True, blank=True)
     precio = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     cantidad = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    cantidad_vendida = models.PositiveIntegerField(default=0)
     activo = models.BooleanField(default=True)
     """
         En sistemas comerciales, es mejor usar un campo 'activo' en lugar de borrar 
