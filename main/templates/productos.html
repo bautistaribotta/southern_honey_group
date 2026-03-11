@@ -195,15 +195,20 @@
       
       <div id="slide-over-panel">
         <!-- Cabecera del Panel -->
-        <div class="panel-cabecera">
+        <header class="panel-cabecera">
           <div class="panel-titulo-fila">
-            <h2>Añadir Producto</h2>
-            <button class="boton-cerrar-panel" onclick="cerrarPanel()">
-              <span class="material-symbols-outlined">close</span>
-            </button>
+            <div class="icono-contenedor">
+              <span class="material-symbols-outlined">inventory_2</span>
+            </div>
+            <div class="texto-cabecera">
+              <h3>Nuevo Producto</h3>
+              <p>Complete los detalles para el inventario</p>
+            </div>
           </div>
-          <p class="panel-subtitulo">Complete los detalles a continuación para agregar un nuevo producto al inventario.</p>
-        </div>
+          <button class="boton-cerrar-panel" onclick="cerrarPanel()">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </header>
 
         <!-- Cuerpo del Panel (Formulario) -->
         <div class="panel-cuerpo">
