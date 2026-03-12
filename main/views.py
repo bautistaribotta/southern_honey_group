@@ -47,8 +47,8 @@ def inicio(request):
 
 @login_required
 def productos(request):
-    # Trae todos los productos de la base de datos ordenados por nombre.
-    productos = Producto.objects.all().order_by("nombre")
+    # Trae solo los productos activos de la base de datos ordenados por nombre.
+    productos = Producto.objects.filter(activo=True).order_by("nombre")
 
     # Divide esa lista total en bloques de 5 productos
     paginator_productos = Paginator(productos, 5)
@@ -68,7 +68,8 @@ def clientes(request):
     Repito el proceso aplicado en productos
     Query + Cant. pag. a mostrar + URL + Los 5 que corresponden + Enviar el listado al HTML
     """
-    clientes = Cliente.objects.all().order_by("nombre")
+    # Trae solo los clientes activos de la base de datos ordenados por nombre.
+    clientes = Cliente.objects.filter(activo=True).order_by("nombre")
     paginator_clientes = Paginator(clientes, 5)
     pagina_numero = request.GET.get("page")
     pagina_obj = paginator_clientes.get_page(pagina_numero)
