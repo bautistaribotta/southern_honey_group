@@ -42,8 +42,11 @@ def get_cotizacion_miel_clara():
         respuesta = requests.get(url)
         html_resp = respuesta.text
         soup = BeautifulSoup(html_resp, "html.parser")
-        todas_las_etiquetas = soup.find_all("td")
-        precio_miel_clara = todas_las_etiquetas[0].text
+        
+        # Busco la celda que contiene el texto de referencia
+        etiqueta_clara = soup.find("td", string=lambda t: t and "Miel Clara" in t)
+        # El precio está en la siguiente celda (el hermano de la etiqueta encontrada)
+        precio_miel_clara = etiqueta_clara.find_next_sibling("td").text
         
         miel_clara_limpia = "".join(filter(str.isdigit, precio_miel_clara))
         return miel_clara_limpia
@@ -58,8 +61,11 @@ def get_cotizacion_miel_oscura():
         respuesta = requests.get(url)
         html_resp = respuesta.text
         soup = BeautifulSoup(html_resp, "html.parser")
-        todas_las_etiquetas = soup.find_all("td")
-        precio_miel_oscura = todas_las_etiquetas[1].text
+        
+        # Busco la celda que contiene el texto de referencia
+        etiqueta_oscura = soup.find("td", string=lambda t: t and "Miel Oscura" in t)
+        # El precio está en la siguiente celda (el hermano de la etiqueta encontrada)
+        precio_miel_oscura = etiqueta_oscura.find_next_sibling("td").text
         
         miel_oscura_limpia = "".join(filter(str.isdigit, precio_miel_oscura))
         return miel_oscura_limpia
