@@ -31,6 +31,7 @@ class Cliente(models.Model):
     direccion = models.CharField(max_length=100, null=True, blank=True)
     factura_produccion = models.BooleanField(default=False)
     cuit = models.CharField(max_length=15, null=True, blank=True)
+    activo = models.BooleanField(default=True)
 
     # Obligo a Django a nombrar la tabla como "clientes"
     class Meta:

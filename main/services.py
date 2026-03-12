@@ -85,6 +85,31 @@ def nuevo_producto(nombre, categoria=None, precio=None, cantidad=None):
     return nuevo_producto
 
 
+def editar_producto(id_producto, nombre, categoria, precio, cantidad, activo):
+    from .models import Producto
+    producto = Producto.objects.get(id=id_producto)
+    
+    producto.nombre = nombre
+    producto.categoria = categoria
+    producto.precio = precio
+    producto.cantidad = cantidad
+    producto.activo = activo
+    
+    producto.save()
+    return producto
+
+
+def eliminar_producto(id_producto):
+    from .models import Producto
+    producto = Producto.objects.get(id=id_producto)
+    
+    # En lugar de borrarlo de la base de datos, lo marcamos como inactivo
+    # para no perder el historial de ventas en las otras tablas
+    producto.activo = False
+    producto.save()
+    return producto
+
+
 def nuevo_cliente(nombre, apellido=None, telefono=None, localidad=None, direccion=None, cuit=None, factura_produccion=False):
     from .models import Cliente
     nuevo_cliente = Cliente.objects.create(
@@ -97,3 +122,31 @@ def nuevo_cliente(nombre, apellido=None, telefono=None, localidad=None, direccio
                     factura_produccion=factura_produccion
     )
     return nuevo_cliente
+
+
+def editar_cliente(id_cliente, nombre, apellido, telefono, localidad, direccion, cuit, factura_produccion, activo):
+    from .models import Cliente
+    cliente = Cliente.objects.get(id=id_cliente)
+    
+    cliente.nombre = nombre
+    cliente.apellido = apellido
+    cliente.telefono = telefono
+    cliente.localidad = localidad
+    cliente.direccion = direccion
+    cliente.cuit = cuit
+    cliente.factura_produccion = factura_produccion
+    cliente.activo = activo
+    
+    cliente.save()
+    return cliente
+
+
+def eliminar_cliente(id_cliente):
+    from .models import Cliente
+    cliente = Cliente.objects.get(id=id_cliente)
+    
+    # Marcamos el cliente como inactivo en lugar de borrarlo
+    # Esto es clave para no perder el historial de sus compras pasadas
+    cliente.activo = False
+    cliente.save()
+    return cliente
