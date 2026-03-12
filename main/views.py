@@ -34,7 +34,7 @@ para que se loguee. Todo esto implementado usando el wrapped @login_required
 """
 
 
-@login_required(login_url='/')
+@login_required
 def inicio(request):
     dolar_oficial = get_cotizacion_oficial()
     dolar_blue = get_cotizacion_blue()
@@ -45,7 +45,7 @@ def inicio(request):
     return render(request, "inicio.html", contexto)
 
 
-@login_required(login_url='/')
+@login_required
 def productos(request):
     # Trae todos los productos de la base de datos ordenados por nombre.
     productos = Producto.objects.all().order_by("nombre")
@@ -62,7 +62,7 @@ def productos(request):
     return render(request, "productos.html", {"productos":pagina_obj})
 
 
-@login_required(login_url='/')
+@login_required
 def clientes(request):
     """
     Repito el proceso aplicado en productos
@@ -76,12 +76,12 @@ def clientes(request):
     return render(request, "clientes.html", {"clientes": pagina_obj})
 
 
-@login_required(login_url='/')
+@login_required
 def deudores(request):
     return render(request, "deudores.html")
 
 
-@login_required(login_url='/')
+@login_required
 def remitos(request):
     return render(request, "remitos.html")
 

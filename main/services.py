@@ -66,3 +66,28 @@ def get_cotizacion_miel_oscura():
     except Exception as e:
         print(f"Error al obtener cotización miel oscura: {e}") # Quitar a futuro
         return None
+
+
+def nuevo_producto(nombre, categoria=None, precio=None, cantidad=None):
+    from .models import Producto
+    nuevo_producto = Producto.objects.create(
+                    nombre=nombre,
+                    categoria=categoria,
+                    precio=precio,
+                    cantidad=cantidad
+    )
+    return nuevo_producto
+
+
+def nuevo_cliente(nombre, apellido=None, telefono=None, localidad=None, direccion=None, cuit=None, factura_produccion=False):
+    from .models import Cliente
+    nuevo_cliente = Cliente.objects.create(
+                    nombre=nombre,
+                    apellido=apellido,
+                    telefono=telefono,
+                    localidad=localidad,
+                    direccion=direccion,
+                    cuit=cuit,
+                    factura_produccion=factura_produccion
+    )
+    return nuevo_cliente
