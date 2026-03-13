@@ -288,6 +288,12 @@
   -webkit-font-smoothing: antialiased;
 }
 
+#form-cliente {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 #slide-over-contenedor.abierto #slide-over-panel {
   transform: translateX(0);
 }
