@@ -260,7 +260,7 @@
 #slide-over-fondo {
   position: absolute;
   inset: 0;
-  background-color: rgba(15, 23, 42, 0.4);
+  background-color: #0f172a66;
   backdrop-filter: blur(4px);
   opacity: 0;
   transition: opacity 0.3s ease-in-out;

@@ -1,4 +1,6 @@
-from .services import get_cotizacion_oficial, get_cotizacion_blue, get_cotizacion_miel_clara, get_cotizacion_miel_oscura
+from .services import (get_cotizacion_oficial, get_cotizacion_blue,
+                       get_cotizacion_miel_clara, get_cotizacion_miel_oscura,
+                       nuevo_producto, nuevo_cliente)
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
@@ -9,11 +11,11 @@ from .models import Producto, Cliente
 
 def login(request):
     if request.method == "POST":
-        usuario_ingresado = request.POST.get("user")
-        password_ingresada = request.POST.get("password")
+        usuario = request.POST.get("user")
+        password = request.POST.get("password")
 
         # Autenticacion
-        usuario_valido = authenticate(request, username=usuario_ingresado, password=password_ingresada)
+        usuario_valido = authenticate(request, username=usuario, password=password)
 
         # Si es válido los redirijo, si no, envío el error por mensaje
         if usuario_valido is not None:
@@ -47,6 +49,19 @@ def inicio(request):
 
 @login_required
 def productos(request):
+    # Recibo el metodo POST, guardo los datos del formulario, creo
+    # el producto en la base de datos, queda realizar validaciones
+    if request.method == "POST":
+        nombre_producto = request.POST.get("nombre")
+        categoria = request.POST.get("categoria")
+        precio = request.POST.get("precio")
+        cantidad = request.POST.get("stock")
+
+        nuevo_producto(nombre_producto, categoria, precio, cantidad)
+        messages.success(request, "Producto agregado correctamente.")
+
+        return redirect("productos")
+
     # Trae solo los productos activos de la base de datos ordenados por nombre.
     productos = Producto.objects.filter(activo=True).order_by("nombre")
 
