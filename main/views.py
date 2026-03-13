@@ -79,6 +79,20 @@ def productos(request):
 
 @login_required
 def clientes(request):
+    if request.methotd == "POST":
+        nombre_cliente = request.POST.get("nombre")
+        apellido = request.POST.get("apellido")
+        telefono = request.POST.get("telefono")
+        localidad = request.POST.get("localidad")
+        direccion = request.POST.get("direccion")
+        factura = request.POST.get("factura")
+        cuit = request.POST.get("cuit")
+
+        nuevo_cliente(nombre_cliente, apellido, telefono, localidad, direccion, factura, cuit)
+        messages.success(request, "Cliente creado correctamente")
+
+        return redirect("clientes")
+
     """
     Repito el proceso aplicado en productos
     Query + Cant. pag. a mostrar + URL + Los 5 que corresponden + Enviar el listado al HTML

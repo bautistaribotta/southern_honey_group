@@ -177,6 +177,8 @@
     <div id="slide-over-fondo" onclick="cerrarPanel()"></div>
 
     <div id="slide-over-panel">
+      <form id="form-cliente" method="POST">
+      {% csrf_token %}
       <!-- 1. Cabecera -->
       <header class="panel-cabecera">
         <div class="panel-titulo-fila">
@@ -188,7 +190,7 @@
             <p>Ingrese los datos para el registro</p>
           </div>
         </div>
-        <button class="btn-cerrar" onclick="cerrarPanel()">
+        <button type="button" class="boton-cerrar" onclick="cerrarPanel()">
           <span class="material-symbols-outlined">close</span>
         </button>
       </header>
@@ -206,19 +208,19 @@
           <div class="sub-panel-datos">
             <div class="grupo-input">
               <label for="nombre">Nombre</label>
-              <input type="text" id="nombre" placeholder="Ej: Juan Antonio">
+              <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Antonio">
             </div>
 
             <div class="grupo-input">
               <label for="apellido">Apellido</label>
-              <input type="text" id="apellido" placeholder="Ej: Pérez Garcia">
+              <input type="text" id="apellido" name="apellido" placeholder="Ej: Pérez Garcia">
             </div>
 
             <div class="grupo-input">
               <label for="telefono">Teléfono</label>
               <div class="input-con-icono">
                 <span class="material-symbols-outlined">call</span>
-                <input type="text" id="telefono" placeholder="Ej: +54 9 02302...">
+                <input type="text" id="telefono" name="telefono" placeholder="Ej: +54 9 02302...">
               </div>
             </div>
           </div>
@@ -234,12 +236,12 @@
           <div class="sub-panel-datos">
             <div class="grupo-input">
               <label for="localidad">Localidad</label>
-              <input type="text" id="localidad" placeholder="Ej: Córdoba Capital">
+              <input type="text" id="localidad" name="localidad" placeholder="Ej: Córdoba Capital">
             </div>
 
             <div class="grupo-input">
               <label for="direccion">Dirección</label>
-              <input type="text" id="direccion" placeholder="Calle y número">
+              <input type="text" id="direccion" name="direccion" placeholder="Calle y número">
             </div>
           </div>
         </section>
@@ -258,14 +260,14 @@
                 <span class="subtitulo-toggle">Activar para requerir datos fiscales</span>
               </div>
               <label class="switch">
-                <input type="checkbox" id="factura">
+                <input type="checkbox" id="factura" name="factura">
                 <span class="slider"></span>
               </label>
             </div>
 
             <div class="grupo-input" id="campo-cuit">
               <label for="cuit">CUIT</label>
-              <input type="text" id="cuit" placeholder="00-00000000-0">
+              <input type="text" id="cuit" name="cuit" placeholder="00-00000000-0">
             </div>
           </div>
         </section>
@@ -274,9 +276,10 @@
 
       <!-- 3. Pie fijo -->
       <footer class="panel-pie">
-        <button class="btn-secundario" onclick="cerrarPanel()">Cancelar</button>
-        <button class="btn-primario">Guardar Cliente</button>
+        <button type="button" class="boton-secundario" onclick="cerrarPanel()">Cancelar</button>
+        <button type="submit" class="boton-primario">Guardar Cliente</button>
       </footer>
+      </form>
     </div>
   </div>
 
