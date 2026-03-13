@@ -79,7 +79,7 @@ def productos(request):
 
 @login_required
 def clientes(request):
-    if request.methotd == "POST":
+    if request.method == "POST":
         nombre_cliente = request.POST.get("nombre")
         apellido = request.POST.get("apellido")
         telefono = request.POST.get("telefono")
